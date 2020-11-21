@@ -3,17 +3,17 @@ import 'package:flutter_login_signup/src/loginPage.dart';
 import 'package:flutter_login_signup/src/signup.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class WelcomePage extends StatefulWidget {
-  WelcomePage({Key key, this.title}) : super(key: key);
+class UserPage extends StatefulWidget {
+  UserPage({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _WelcomePageState createState() => _WelcomePageState();
+  _UserPageState createState() => _UserPageState();
 }
 
-class _WelcomePageState extends State<WelcomePage> {
-  Widget _submitButton() {
+class _UserPageState extends State<UserPage> {
+  Widget _logSourceAddButton() {
     return InkWell(
       onTap: () {
         Navigator.push(
@@ -34,14 +34,14 @@ class _WelcomePageState extends State<WelcomePage> {
             ],
             color: Colors.white),
         child: Text(
-          'Giris Yap',
+          'Log Kaynagi Ekle',
           style: TextStyle(fontSize: 20, color: Color(0xfff7892b)),
         ),
       ),
     );
   }
 
-  Widget _signUpButton() {
+  Widget _logSourceListButton() {
     return InkWell(
       onTap: () {
         Navigator.push(
@@ -56,7 +56,57 @@ class _WelcomePageState extends State<WelcomePage> {
           border: Border.all(color: Colors.white, width: 2),
         ),
         child: Text(
-          'Kaydol',
+          'Log Kaynagi Listesini Görüntüle',
+          style: TextStyle(fontSize: 20, color: Colors.white),
+        ),
+      ),
+    );
+  }
+
+  Widget _alertRecordsButton() {
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => LoginPage()));
+      },
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        padding: EdgeInsets.symmetric(vertical: 13),
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(5)),
+            boxShadow: <BoxShadow>[
+              BoxShadow(
+                  color: Color(0xffdf8e33).withAlpha(100),
+                  offset: Offset(2, 4),
+                  blurRadius: 8,
+                  spreadRadius: 2)
+            ],
+            color: Colors.white),
+        child: Text(
+          'Geçmis Alarm Kayıtları',
+          style: TextStyle(fontSize: 20, color: Color(0xfff7892b)),
+        ),
+      ),
+    );
+  }
+
+  Widget _alarmSettingsButton() {
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => SignUpPage()));
+      },
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        padding: EdgeInsets.symmetric(vertical: 13),
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(5)),
+          border: Border.all(color: Colors.white, width: 2),
+        ),
+        child: Text(
+          'Alarm Ayarları',
           style: TextStyle(fontSize: 20, color: Colors.white),
         ),
       ),
@@ -115,11 +165,19 @@ class _WelcomePageState extends State<WelcomePage> {
               SizedBox(
                 height: 80,
               ),
-              _submitButton(),
+              _logSourceAddButton(),
               SizedBox(
                 height: 20,
               ),
-              _signUpButton(),
+              _logSourceListButton(),
+              SizedBox(
+                height: 20,
+              ),
+              _alertRecordsButton(),
+              SizedBox(
+                height: 20,
+              ),
+              _alarmSettingsButton(),
               SizedBox(
                 height: 20,
               )
